@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Animated Heart Shape</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        display: flex; /* Use flexbox to center vertically */
+        justify-content: center; /* Center the div vertically */
+        background-color: antiquewhite;
+      }
+
+      .heart {
+        position: relative;
+        width: 400px;
+        height: 280px;
+        margin: auto; /* Center the div horizontally */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .heart:before,
+      .heart:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 198px;
+        width: 200px;
+        height: 320px;
+        background-color: #fc5185;
+        border-radius: 180px 180px 0 0;
+        transform: rotate(-45deg);
+        transform-origin: 0 100%;
+      }
+
+      .heart:after {
+        left: 0;
+        transform: rotate(45deg);
+        transform-origin: 100% 100%;
+      }
+
+      .heart:hover:before,
+      .heart:hover:after {
+        background-color: #ff2466;
+      }
+
+      .heart-pulse {
+        animation: pulse 1s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.2);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      /* Styling for message popup */
+      .message {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        font-size: 40px;
+        transform: translate(-50%, -50%);
+        background-color: #ffffff;
+        padding: 120px;
+        border: 2px solid #000000;
+        z-index: 1;
+        text-align: center; /* Center the text horizontally */
+      } 
+    </style>
+  </head>
+  <body>
+    <div class="heart heart-pulse" onclick="showMessage()">
+      <span style="position: absolute; color: white; font-weight: bold; z-index: 4;  font-size: 2em;">Haz clic </span>
+    </div>
+    <div id="message" class="message"><em>Deja de llorar y empeiza a hacer algo con tu vida <3 </em> <br> <br>by hxx </div>
+      
+    <script>
+      function showMessage() {
+        var message = document.getElementById("message");
+        message.style.display = "block";
+      }
+    </script>
+  </body>
+</html>
